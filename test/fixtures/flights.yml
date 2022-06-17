@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure_id: 1
+  arrival_id: 1
+  departure_date: 2022-06-17
+  departure_time: 2022-06-17 01:03:44
+  duration: 1
+
+two:
+  departure_id: 1
+  arrival_id: 1
+  departure_date: 2022-06-17
+  departure_time: 2022-06-17 01:03:44
+  duration: 1
