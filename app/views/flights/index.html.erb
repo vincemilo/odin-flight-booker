@@ -1,0 +1,17 @@
+<h1>Flight Booker</h1>
+
+<div>
+  <h3>Departure Airport</h3>
+    <%= form_with model: @airport, method: :get do |f| %>
+      <%= f.collection_select :departure_code,
+      Airport.order(:code), :code, :code %>
+  <h3>Arrival Airport</h3>
+    <%= f.collection_select :arrival_code,
+      Airport.order(:code), :code, :code %>
+  <h3>Passengers</h3>
+    <%= f.select :passengers, (1..4).to_a %>
+  <h3>Date</h3>
+    <%= f.date_select :departure_date %>
+  <p><%= f.submit 'Seach for Flights' %></p>
+    <% end %>
+</div>
