@@ -3,15 +3,28 @@
 <div>
   <h3>Departure Airport</h3>
     <%= form_with model: @airport, method: :get do |f| %>
-      <%= f.collection_select :departure_code,
-      Airport.order(:code), :code, :code %>
+      <%= f.select :origin_code, @airport_options %>
   <h3>Arrival Airport</h3>
-    <%= f.collection_select :arrival_code,
-      Airport.order(:code), :code, :code %>
+    <%= f.select :destination_code, @airport_options %>
   <h3>Passengers</h3>
     <%= f.select :passengers, (1..4).to_a %>
   <h3>Date</h3>
-    <%= f.date_select :departure_date %>
+    <%= f.select :date, @departure_dates %>
   <p><%= f.submit 'Seach for Flights' %></p>
     <% end %>
 </div>
+
+<div>
+<% if @origin_code %>
+  <h3>Available Flights:</h3>
+  <% if @origin_code == @destination_code %>
+    <p>Please select different arrival/destination airports.</p>
+  <% else %>
+    Flight #
+    <% @results.each do |result| %>
+      <%= result.id %>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
+
