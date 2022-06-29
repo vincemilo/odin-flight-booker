@@ -10,7 +10,7 @@
     <%= f.select :passengers, (1..4).to_a %>
   <h3>Date</h3>
     <%= f.select :date, @departure_dates %>
-  <p><%= f.submit 'Seach for Flights' %></p>
+    <p><%= f.submit 'Seach for Flights' %></p>
     <% end %>
 </div>
 
@@ -19,10 +19,15 @@
   <h3>Available Flights:</h3>
   <% if @origin_code == @destination_code %>
     <p>Please select different arrival/destination airports.</p>
+  <% elsif @results.any? == false %>
+    <p>Sorry, there are no flights available for this date.</p>
   <% else %>
-    Flight #
-    <% @results.each do |result| %>
-      <%= result.id %>
+    <%= form_with url: '/', method: :get do |f| %>
+      <% @results.each do |result| %>
+        <%= f.radio_button :flight, result.id %>
+        <%= f.label :flight_id, 'Flight #' + result.id.to_s %>
+      <% end %>
+      <p><%= f.submit 'Select this flight' %></p>
     <% end %>
   <% end %>
 <% end %>
