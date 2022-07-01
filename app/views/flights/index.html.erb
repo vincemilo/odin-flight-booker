@@ -2,7 +2,7 @@
 
 <div>
   <h3>Departure Airport</h3>
-    <%= form_with model: @airport, method: :get do |f| %>
+    <%= form_with url: '/', method: :get do |f| %>
       <%= f.select :origin_code, @airport_options %>
   <h3>Arrival Airport</h3>
     <%= f.select :destination_code, @airport_options %>
@@ -22,10 +22,10 @@
   <% elsif @results.any? == false %>
     <p>Sorry, there are no flights available for this date.</p>
   <% else %>
-    <%= form_with url: '/', method: :get do |f| %>
+    <%= form_with url: new_booking_path, method: :get do |f| %>
       <% @results.each do |result| %>
-        <%= f.radio_button :flight, result.id %>
-        <%= f.label :flight_id, 'Flight #' + result.id.to_s %>
+        <%= f.radio_button :flight_id, result.id %>
+        <%= f.label :flight, 'Flight #' + result.id.to_s %>
         <%= f.hidden_field :passengers, value: @passengers %>
       <% end %>
       <p><%= f.submit 'Select this flight' %></p>

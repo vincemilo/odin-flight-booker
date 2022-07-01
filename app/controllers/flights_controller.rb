@@ -7,7 +7,7 @@ class FlightsController < ApplicationController
     @date = params[:date]
     @passengers = params[:passengers]
     @results = Flight.where('origin_id = ? AND destination_id = ? AND departure_date = ?',
-      @origin_code, @destination_code, @date) 
+      @origin_code, @destination_code, @date)
   end
 
   private
