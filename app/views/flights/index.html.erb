@@ -26,6 +26,7 @@
       <% @results.each do |result| %>
         <%= f.radio_button :flight, result.id %>
         <%= f.label :flight_id, 'Flight #' + result.id.to_s %>
+        <%= f.hidden_field :passengers, value: @passengers %>
       <% end %>
       <p><%= f.submit 'Select this flight' %></p>
     <% end %>
