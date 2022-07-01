@@ -1,1 +1,15 @@
 <h1>New Booking</h1>
+<div>
+<p><%= 'Flight # ' + params[:flight_id].to_s %></p>
+</div>
+<div>
+  <h3>Please Enter Passenger Information</h3>
+    <%= form_with model: @booking do |f| %>
+      <% @passengers.to_i.times do |p| %>
+        <%= 'Passenger #' + (p + 1).to_s %>
+        <%= f.text_field :name %>
+        <%= f.text_field :email %>        
+      <% end %>
+      <%= f.submit %>
+    <% end %>
+</div>

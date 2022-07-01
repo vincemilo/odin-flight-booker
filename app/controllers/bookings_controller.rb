@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
   def new
     @booking = Booking.new
+    @passengers = params[:passengers]
+    @passenger = Passenger.new
   end
 
   def create
