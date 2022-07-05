@@ -7,8 +7,10 @@
     <%= form_with model: @booking do |f| %>
       <% @passengers.to_i.times do |p| %>
         <%= 'Passenger #' + (p + 1).to_s %>
-        <%= f.text_field :name %>
-        <%= f.text_field :email %>        
+        <%= f.fields_for @booking.passengers.build do |sub_form| %> 
+          <%= sub_form.text_field :name %>
+          <%= sub_form.text_field :email %>
+        <% end %>
       <% end %>
       <%= f.submit %>
     <% end %>
