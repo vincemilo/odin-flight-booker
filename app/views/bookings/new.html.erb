@@ -4,16 +4,14 @@
 </div>
 <div>
   <h3>Please Enter Passenger Information</h3>
-    <%= form_with model: @booking do |f| %>
+    <%= form_with model: @booking, method: :get do |f| %>
       <%= f.hidden_field :flight_id, value: params[:flight_id] %>
-      <% @passengers.to_i.times do |p| %>
-        <%= 'Passenger #' + (p + 1).to_s %>
-        <%= f.fields_for @booking.passengers.build do |sub_form| %> 
-          <p><%= sub_form.label :name %>
-          <%= sub_form.text_field :name %></p>
-          <p><%= sub_form.label :email %>
-          <%= sub_form.text_field :email %></p>
-        <% end %>
+      <%= f.fields_for :passengers do |sub_form| %>
+        <p>Passenger #<%= @passenger_count += 1 %></p>
+        <p><%= sub_form.label :name %>
+        <%= sub_form.text_field :name %></p>
+        <p><%= sub_form.label :email %>
+        <%= sub_form.text_field :email %></p>
       <% end %>
       <%= f.submit %>
     <% end %>
