@@ -1,1 +1,11 @@
-<h1>Show</h1>
+<h1>Booking Confirmed</h1>
+
+<p>Confirmation # <%= @booking.id %></p>
+<p>Flight # <%= @booking.flight_id %></p>
+
+<% @booking.passengers.each do |passenger| %>
+  <p>Passenger Name: <%= passenger.name %></p>
+  <p>Passenger Email: <%= passenger.email %></p>
+<% end %>
+
+<h3>Thank you for booking with us!</h3>

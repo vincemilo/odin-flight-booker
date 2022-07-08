@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
-      render :show
+      redirect_to @booking
     else
       redirect_to new_passenger_path, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:flight_id,
+    params.require(:booking).permit(:flight_id, :id,
       passengers_attributes: [:name, :email])
   end
 
