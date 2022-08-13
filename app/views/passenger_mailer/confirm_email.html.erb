@@ -4,10 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Your booking is confirmed, <%= @booking.passengers.name %></h1>
+    <h1>Your booking is confirmed,</h1>
+    <% @booking.passengers.each do |passenger| %>
+    <p><%= passenger.name %></p>
+    <% end %>
     <p>
       Your flight # is <%= @booking.flight_id %>
     </p>
-    <p>Thanks for your business!</p>
+    <p>Thank you for your business!</p>
   </body>
 </html>

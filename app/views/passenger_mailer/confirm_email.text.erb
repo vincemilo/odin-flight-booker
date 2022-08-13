@@ -1,6 +1,9 @@
-Your booking is confirmed, <%= @booking.passengers.name %>
+Your booking is confirmed,
+<% @booking.passengers.each do |passenger| %>
+<%= passenger.name %>
+<% end %>
 ===============================================
 
 Your flight # is <%= @booking.flight_id %>
 
-Thanks for your business!
+Thank you for your business!
