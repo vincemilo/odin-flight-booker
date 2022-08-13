@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
+      PassengerMailer.with(booking_id: @booking.id).confirm_email.deliver_now
       redirect_to @booking
     else
       redirect_to new_passenger_path, status: :unprocessable_entity
